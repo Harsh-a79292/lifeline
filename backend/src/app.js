@@ -3,11 +3,13 @@ const helmet = require("helmet");
 const cors = require("cors");
 const { corsOptions } = require("./config/cors");
 const { apiLimiter } = require("./middleware/rateLimiter");
-
 const app = express();
+
+app.set("trust proxy", 1);
 
 // Security Headers
 app.use(helmet());
+
 
 // Strict Configurable CORS
 app.use(cors(corsOptions));
